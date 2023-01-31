@@ -4,6 +4,7 @@ $(window).ready(function () {
     $("#currentDay").text(day);
     generateTimeBlock();
     loadSavedEvent();
+    colorTimeblock();
 });
 
 function generateTimeBlock() {
@@ -32,7 +33,7 @@ function loadSavedEvent() {
     for (let i = 0; i < timeBlock.length; i++) {
         let savedEventContent = getFromStorage(timeBlock[i]);
         console.log(savedEventContent);
-        if(savedEventContent != null){
+        if (savedEventContent != null) {
             $("#" + timeBlock[i]).text(savedEventContent);
         }
     }
@@ -48,4 +49,14 @@ function getFromStorage(key) {
 function saveToStorage(key, content) {
     //localStorage.setItem("1PM", "Meeting with me");
     localStorage.setItem(key, JSON.stringify(content));
+}
+
+function colorTimeblock() {
+    var current = moment().format('hhA');
+    for (let i = 0; i < timeBlock.length; i++) {
+        //change current timeblock to red
+        if (current == timeBlock[i]) {
+            $("#" + timeBlock[i]).css("background-color", "red");
+        }
+    }
 }
