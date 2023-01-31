@@ -23,14 +23,19 @@ function generateTimeBlock() {
 // function for saving event by clicking the save button
 function saveEvent(eventId) {
 
-    saveToStorage(eventId,$("#" + eventId).val());
+    saveToStorage(eventId, $("#" + eventId).val());
     console.log($("#" + eventId).val());
 }
 
 // function for load saved event
-function loadSavedEvent(){
-
-    getFromStorage()
+function loadSavedEvent() {
+    for (let i = 0; i < timeBlock.length; i++) {
+        let savedEventContent = getFromStorage(timeBlock[i]);
+        console.log(savedEventContent);
+        if(savedEventContent != null){
+            $("#" + timeBlock[i]).text(savedEventContent);
+        }
+    }
 }
 
 // function for geting local storage content
