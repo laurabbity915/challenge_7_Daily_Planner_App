@@ -52,11 +52,11 @@ function saveToStorage(key, content) {
 }
 
 function colorTimeblock() {
-    var current = moment().format('hhA');
+    var current = moment().format('hA');
     for (let i = 0; i < timeBlock.length; i++) {
         //change current timeblock to red
         if (current == timeBlock[i]) {
-            $("#" + timeBlock[i]).css("background-color", "red");
+            $("#" + timeBlock[i]).css("background-color", "#96b6e8");
         }
     }
 }
